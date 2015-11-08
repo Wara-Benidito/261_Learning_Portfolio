@@ -1,0 +1,4 @@
+{ "tasks": [
+    { "name": "Create more tasks", "done": 0 }
+    , { "name": "Check off some tasks", "done": 1 }
+] }
