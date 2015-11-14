@@ -138,7 +138,7 @@ function dynamic() {
 /*
  * - This starts the AJAX/JSON example(s)
  */
-var todoList = document.getElementById("todo");
+var jsonObj;
 
 function getTasks() {
     var data_file = "js/todoList.json";
@@ -163,23 +163,92 @@ function getTasks() {
       http_request.onreadystatechange = function(){
           if (http_request.readyState === 4){
               // Javascript function JSON.parse to parse JSON data
-              var jsonObj = JSON.parse(http_request.responseText);
-              console.log(jsonObj);
-              var list = "<ul>";
-              for(var obj in jsonObj.tasks){
-                  list += "<li>" + obj.name + " <input type=\"checkbox\"";
-                  if(obj.done === 1){
-                      list += " checked>Done</input></li>";
-                  } else {
-                      list += ">Not Done</input></li>";
-                  }
-              }
-              list += "</ul>";
-              document.getElementById("todo").innerHTML = list;
+              jsonObj = JSON.parse(http_request.responseText);
+			  showTasks();
           }
       }
       http_request.open("GET", data_file, true);
       http_request.send();
+  }
+  
+  function addTask() {
+	
+	var newTask = document.getElementById("newTask").value;
+	if(newTask !== '') {
+		jsonObj.tasks.push({"name": newTask, "done": 0});
+	}
+	  
+	//next you would initiate a XMLHTTPRequest as following (could be more advanced):
+	var url = "json.php?json=";//your url to the server side file that will receive the data.
+	var http = new XMLHttpRequest();
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			console.log(http.responseText);//check if the data was received successfully.
+		}
+	}
+	http.open("GET", url + JSON.stringify(jsonObj), true);
+	//Send the proper header information along with the request
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+	http.send();
+
+	document.getElementById("newTask").value = '';
+	
+	showTasks();
+  }
+  
+  function removeDone() {
+	  for(var i = jsonObj.tasks.length - 1; i >= 0 ; i--) {
+		  if (jsonObj.tasks[i].done == 1) {
+			  jsonObj.tasks.splice(i, 1);
+		  }
+	  }
+	  
+	  addTask();
+  }
+  
+  function checkAll() {
+	  for(var i = 0; i < jsonObj.tasks.length; i++) {
+		  jsonObj.tasks[i].done = 1;
+  	  }
+	
+	addTask();
+  }
+  
+  function uncheckAll() {
+	  for(var i = 0; i < jsonObj.tasks.length; i++) {
+		  jsonObj.tasks[i].done = 0;
+  	  }
+	
+	addTask();
+  }
+
+  function updateList() {
+	  for(var i = 0; i < jsonObj.tasks.length; i++) {
+		if(document.getElementById("task" + i).checked == true) {
+			jsonObj.tasks[i].done = 1;
+		} else {
+			jsonObj.tasks[i].done = 0;
+		}
+	  }
+	  
+	  addTask();
+  }
+  
+  function showTasks() {
+	
+	console.log(jsonObj);
+	var list = "<ul>";
+    for(var i = 0; i < jsonObj.tasks.length; i++){
+		list += "<li>" + jsonObj.tasks[i].name + " <input id=\"task" + i + "\" type=\"checkbox\"";
+        if(jsonObj.tasks[i].done === 1){
+			list += " checked>Done</input></li>";
+        } else {
+			list += ">Not Done</input></li>";
+        }
+    }
+	list += "</ul>";
+    document.getElementById("todo").innerHTML = list;
   }
   
   /*

@@ -1,3 +1,6 @@
+ul {
+	list-style-type: none;
+}
 #transform:hover {
     width: 200px;
     height: 100px;

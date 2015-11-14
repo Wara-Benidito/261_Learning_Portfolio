@@ -41,22 +41,27 @@
     <br>
     <div id="css">
         <h2>CSS Transformations</h2>
-        <div id="transform">Hover your mouse over this div to watch it transform &#40;rotate&#41;</div>
+        <div id="transform">Click this div to watch it transform &#40;rotate&#41;</div>
         <br>
         <h2>CSS Transitions</h2>
-        <div id="transition">Hover your mouse over this div to watch it &#40;transition&#41; change size and color</div>
+        <div id="transition">Click this div to watch it &#40;transition&#41; change size and color</div>
         <br>
         <h2>CSS Animations</h2>
         <div id="animation" class="hover">
-            <button id="box" class="shadow">Hover to (animate) pulse</button>
+            <button id="box" class="shadow">Click to (animate) pulse</button>
         </div>
     </div>
     <div id="ajax">
         <h2>Using AJAX for DOM Manipulation</h2>
-        <p>Still under construction...</p>
         <h3>To Do List:</h3>
-        <div id="todo">Retrieve the 'to do' list by clicking the button.</div>
-        <button type="button" onclick="getTasks()">Load To Do's</button>
+        <div id="todo"></div>
+		<button id="updateList" type="button" onclick="updateList()">Update List</button>&nbsp;
+		<input id="newTask" type="text" placeholder="new task">&nbsp;
+		<button id="addTask" type="button" onclick="addTask()">Add Task to List</button>&nbsp;
+		<br/><br/>
+		<button id="checkAll" type="button" onclick="checkAll()">Check All</button>&nbsp;
+		<button id="uncheckAll" type="button" onclick="uncheckAll()">Uncheck All</button>&nbsp;
+		<button id="removeDone" type="button" onclick="removeDone()">Remove Done</button>
     </div>
     <br>
     <div id="blend">
@@ -95,7 +100,7 @@
 	<script src="js/cit261.js"></script>
 	<script type="text/javascript" src="js/render.js" ></script>
 <script>
-    document.getElementById('CIT261').onload = joesephInit(), reload(), getCalendar();
+    document.getElementById('CIT261').onload = joesephInit(), reload(), getCalendar(), getTasks();
 </script>
     <div id="footer"></div>
   </body>
