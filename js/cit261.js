@@ -84,55 +84,55 @@ function joesephResetAge() {
  * - brings the local storage example(s) into view
  */
 function local() {
-    document.getElementById('local').style.display = 'block';
-    document.getElementById('ajax').style.display = 'none';
-    document.getElementById('css').style.display = 'none';
-    document.getElementById('blend').style.display = 'none';
-    document.getElementById('dynamic').style.display = 'none';
+    document.getElementById('local').className = 'fadeIn';
+    document.getElementById('ajax').className = 'fadeOut';
+    document.getElementById('css').className = 'fadeOut';
+    document.getElementById('blend').className = 'fadeOut';
+    document.getElementById('dynamic').className = 'fadeOut';
 }
   
 /*
  * - brings the AJAX/JSON example(s) into view
  */
 function ajax() {
-    document.getElementById('ajax').style.display = 'block';
-    document.getElementById('local').style.display = 'none';
-    document.getElementById('css').style.display = 'none';
-    document.getElementById('blend').style.display = 'none';
-    document.getElementById('dynamic').style.display = 'none';
+    document.getElementById('ajax').className = 'fadeIn';
+    document.getElementById('local').className = 'fadeOut';
+    document.getElementById('css').className = 'fadeOut';
+    document.getElementById('blend').className = 'fadeOut';
+    document.getElementById('dynamic').className = 'fadeOut';
 }
 
 /*
  * - brings the CSS transitions, transformations, and animations examples into view
  */
 function css() {
-    document.getElementById('css').style.display = 'block';
-    document.getElementById('local').style.display = 'none';
-    document.getElementById('ajax').style.display = 'none';
-    document.getElementById('blend').style.display = 'none';
-    document.getElementById('dynamic').style.display = 'none';
+    document.getElementById('css').className = 'fadeIn';
+    document.getElementById('local').className = 'fadeOut';
+    document.getElementById('ajax').className = 'fadeOut';
+    document.getElementById('blend').className = 'fadeOut';
+    document.getElementById('dynamic').className = 'fadeOut';
 }
 
 /*
  * - brings the JS ojects example(s) into view
  */
 function blend() {
-    document.getElementById('blend').style.display = 'block';
-    document.getElementById('ajax').style.display = 'none';
-    document.getElementById('css').style.display = 'none';
-    document.getElementById('local').style.display = 'none';
-    document.getElementById('dynamic').style.display = 'none';
+    document.getElementById('blend').className = 'fadeIn';
+    document.getElementById('ajax').className = 'fadeOut';
+    document.getElementById('css').className = 'fadeOut';
+    document.getElementById('local').className = 'fadeOut';
+    document.getElementById('dynamic').className = 'fadeOut';
 }
 
 /*
  * - brings the dynamic calendar into view
  */
 function dynamic() {
-    document.getElementById('dynamic').style.display = 'block';
-    document.getElementById('ajax').style.display = 'none';
-    document.getElementById('css').style.display = 'none';
-    document.getElementById('local').style.display = 'none';
-    document.getElementById('blend').style.display = 'none';
+    document.getElementById('dynamic').className = 'fadeIn';
+    document.getElementById('ajax').className = 'fadeOut';
+    document.getElementById('css').className = 'fadeOut';
+    document.getElementById('local').className = 'fadeOut';
+    document.getElementById('blend').className = 'fadeOut';
 }
 
 /*
